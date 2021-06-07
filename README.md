@@ -1,4 +1,7 @@
 # mcbe-websocket
 <br>
+https://youtu.be/G8ZuokS9_pg<br>
+<br>
+webからコマンドを実行できるやつ<br>
 /connect [ip]:19132 でマイクラと接続<br>
-http://localhost:3000 でpublish/index.htmlを開けます
+http://[ip]:3000 でpublish/index.htmlを開く
