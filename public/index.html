@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="content-type"
+        content="text/html; charset=UTF-8">
+    <title>send test</title>
+    <style>
+    body {
+    font: Helvetica;
+    }
+    </style>
+</head>
+ 
+<body>
+<hr>
+<form method="post" id="form" name="form" target="sendText">
+<table>
+    <tr><td><span style="font: Helvetica;">Text:</span></td><td><input type="text" name="text" id="text" style="width:500px; height:1.5em; font-size:110%;"></td></tr>
+    <tr><td></td><td><button class="btn-send" id="send" onClick="btn();">送信</button></td></tr>
+
+</table>
+</form>
+<iframe name="sendText" style="width:0px;height:0px;border:0px;"></iframe>
+<br><br>
+
+<textarea id="log" rows="20" cols="50">
+</textarea>
+
+<br><br>
+<script type="text/javascript">
+const $form = $('#form')
+$('.btn-send').on('click', evt => {
+  $form.submit()
+  $form[0].reset()
+    $('#form').val('');
+  return false
+})
+
+function btn() {
+ let time = getTime();
+ let input = "[" + time + "] " + document.getElementById('text').value + "\n";
+ let log = document.getElementById('log').value;
+ log += input
+ document.getElementById('log').value = log;
+}
+
+function sleep(waitMsec) {
+  var startMsec = new Date();
+ 
+  // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
+  while (new Date() - startMsec < waitMsec);
+}
+/*
+let btn = document.getElementById('send');
+btn.addEventListener('submit', function () {
+alert('a');
+let input = document.getElementById('text').value + "\n";
+let log = document.getElementById('log').value;
+log += input
+document.getElementById('log').value = log;
+}, false);
+*/
+function getTime() {
+  var date = new Date();
+  var hour = date.getHours() + 9;
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  hour = ('0' + hour).slice(-2);
+  minute = ('0' + minute).slice(-2);
+  second = ('0' + second).slice(-2);
+  var time = hour + ':' + minute + ':' + second;
+  return time;
+}
+</script>
+</body>
+ 
+</html>
