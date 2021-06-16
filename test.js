@@ -120,8 +120,8 @@ server.listen(port, function () {
 //=======================
   
   
-  // ユーザー発言時のイベントをsubscribe
-  //ws.send(chat());
+  // ユーザー発言時のイベントをsubscribe(titleraw常時実行してると大量にパケット送信されて落ちるので注意
+  ws.send(chat());
 
   // 各種イベント発生時に呼ばれる関数
   ws.on('message', packet => {
